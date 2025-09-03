@@ -1,0 +1,28 @@
+/* Front CSS */
+.hm-sm { position: fixed; inset: 0; z-index: 999999; display: none; }
+.hm-sm--hidden { display: none; }
+.hm-sm__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+.hm-sm__dialog { position: relative; max-width: 720px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.2); overflow: hidden; transform: translateY(20px); opacity: 0; }
+.hm-sm__content { max-height: 60vh; overflow: auto; padding: 16px; }
+.hm-sm__actions { display: flex; justify-content: center; padding: 12px; border-top: 1px solid #f3f4f6; }
+.hm-sm__close { position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 999px; border: 1px solid #e5e7eb; background: #fff; cursor: pointer; }
+.hm-sm__btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 10px; border: 1px solid #111827; background: #111827; color: #fff; text-decoration: none; font-weight: 600; }
+.hm-sm__btn--ghost { background: #fff; color: #111827; }
+
+.hm-sm-trigger { position: fixed; display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 10px; font-weight: 700; cursor: pointer; z-index: 999998; border: 0 solid transparent; text-decoration: none; }
+.hm-sm-trigger--right-center { top: 50%; right: 10px; transform: translateY(-50%); }
+.hm-sm-trigger--left-center { top: 50%; left: 10px; transform: translateY(-50%); }
+.hm-sm-trigger--right-bottom { bottom: 10px; right: 10px; }
+.hm-sm-trigger--top-center { top: 10px; left: 50%; transform: translateX(-50%); }
+.hm-sm-trigger--bottom-center { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.hm-sm-trigger--left-bottom { bottom: 10px; left: 10px; }
+
+.hm-sm__dialog--sm { max-width: 420px; }
+.hm-sm__dialog--md { max-width: 720px; }
+.hm-sm__dialog--lg { max-width: 1024px; }
+
+.hm-sm__content--scroll { overflow: auto; }
+.hm-sm__content--no-scroll { overflow: visible; }
+
+.hm-sm--enter .hm-sm__dialog { opacity: 1; transform: translateY(0); transition: transform var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease), opacity var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease); }
+.hm-sm--leave .hm-sm__dialog { opacity: 0; transform: translateY(20px); transition: transform var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease), opacity var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease); }
