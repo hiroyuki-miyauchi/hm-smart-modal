@@ -26,3 +26,16 @@
 
 .hm-sm--enter .hm-sm__dialog { opacity: 1; transform: translateY(0); transition: transform var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease), opacity var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease); }
 .hm-sm--leave .hm-sm__dialog { opacity: 0; transform: translateY(20px); transition: transform var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease), opacity var(--hm-sm-anim, .25s) var(--hm-sm-ease, ease); }
+
+
+/* アクセシビリティ用：画面非表示だがスクリーンリーダー向けに読み上げさせるユーティリティ */
+.hm-sm__sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* モーダル内のリンクをボタン風に整形（必要に応じてJSで付与するクラス） */
+.hm-sm__btn--linkgrid{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;border:1px solid #e5e7eb;background:#f9fafb;text-decoration:none;font-weight:600}
+
+/* アンカーをグリッドで並べるためのラッパー */
+.hm-sm__grid{display:grid;gap:15px}
+@media(min-width:1025px){.hm-sm__grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px) and (max-width:1024px){.hm-sm__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:767px){.hm-sm__grid{grid-template-columns:repeat(1,1fr)}}

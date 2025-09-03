@@ -63,3 +63,77 @@
 .hm-sm-admin__save-feedback--ok { color: #065f46; background: #ecfdf5; border-left: 3px solid #10b981; padding: 6px 8px; border-radius: 4px; }
 .hm-sm-admin__save-feedback--ng { color: #991b1b; background: #fef2f2; border-left: 3px solid #ef4444; padding: 6px 8px; border-radius: 4px; }
 .hm-sm-admin__save-feedback--progress { color: #1f2937; background: #f3f4f6; border-left: 3px solid #9ca3af; padding: 6px 8px; border-radius: 4px; }
+
+/* Tabs */
+.hm-sm-admin__tabs{ margin:8px 0; display:flex; gap:6px; flex-wrap:wrap }
+.hm-sm-admin__tabs .button.is-active{ background:#2271b1; color:#fff }
+.hm-sm-admin__tabpane{ display:none; padding:8px 0 }
+.hm-sm-admin__tabpane.is-active{ display:block }
+.hm-sm-admin__grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
+.hm-sm-admin__two{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px }
+.hm-sm-admin__checkgrid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px }
+.hm-sm-admin__set{ background:#fff; border:1px solid #ccd0d4; padding:12px; margin:12px 0 }
+.hm-sm-admin__set-header{ display:flex; gap:8px; align-items:center; justify-content:space-between }
+.hm-sm-admin__global{ background:#fff; border:1px solid #ccd0d4; padding:12px; margin:12px 0 }
+
+
+/* --- HM Smart Modal: Admin non-destructive tabs & visual rhythm --- */
+.hm-sm-admin__section{ background:#fff; border:1px solid #d8dee3; border-radius:8px; padding:12px; margin:12px 0; box-shadow:0 1px 0 rgba(0,0,0,.02); }
+.hm-sm-admin__subhead{ font-size:14px; font-weight:600; padding:.3rem .25rem .5rem; border-bottom:1px solid #edf2f7; margin-bottom:.5rem; color:#1f2937; }
+.hm-sm-admin__tabs{ display:flex; gap:6px; flex-wrap:wrap; margin:10px 0; }
+.hm-sm-admin__tabs .button{ border-radius:9999px; line-height:1.8; padding:0 14px; }
+.hm-sm-admin__tabs .button.is-active{ background:#2271b1; color:#fff; }
+.hm-sm-admin__tabpane{ display:none; }
+.hm-sm-admin__tabpane.is-active{ display:block; }
+.hm-sm-switchtabs{ display:inline-flex; gap:4px; margin:.5rem 0 0; }
+.hm-sm-pill{ border:1px solid #cbd5e1; background:#f8fafc; border-radius:9999px; padding:4px 10px; cursor:pointer; }
+.hm-sm-pill.is-active{ background:#2271b1; color:#fff; border-color:#2271b1; }
+.hm-sm-visually-hidden{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Save feedback fade */
+.hm-sm-admin__save-feedback{ transition: opacity .6s ease; }
+.hm-sm-admin__save-feedback.is-fade{ opacity:0; }
+
+
+/* --- Tabs: standard look --- */
+.hm-sm-admin__tabs{ display:flex; gap:0; border-bottom:1px solid #d0d7de; margin:12px 0 6px }
+.hm-sm-admin__tabs .button{ 
+  background:transparent; border:none; border-radius:0; margin:0; padding:8px 14px; 
+  color:#334155; border-bottom:2px solid transparent;
+}
+.hm-sm-admin__tabs .button:hover{ background:#f6f8fa; }
+.hm-sm-admin__tabs .button.is-active{ 
+  color:#111827; border-bottom-color:#2271b1; font-weight:600; background:#fff;
+}
+.hm-sm-admin__tabpanes{ border:1px solid #e5e7eb; border-top:none; border-radius:0 0 8px 8px; padding:8px 12px; background:#fff; }
+
+/* --- Section cards & titles --- */
+.hm-sm-admin__section{ background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:12px; margin:12px 0; }
+.hm-sm-admin__subhead{ font-size:16px; font-weight:700; padding:.4rem .25rem .55rem; border-bottom:1px solid #edf2f7; margin-bottom:.6rem; color:#0f172a; letter-spacing:.2px; }
+.hm-sm-admin__subhead--emph{ position:relative; }
+.hm-sm-admin__subhead--emph::before{ content:''; position:absolute; left:-8px; top:.55rem; width:4px; height:1.1em; background:#2271b1; border-radius:2px; }
+
+/* Mini switch (modal/link) stays pill style for clarity */
+.hm-sm-switchtabs{ display:inline-flex; gap:4px; margin:.5rem 0 0; }
+.hm-sm-pill{ border:1px solid #cbd5e1; background:#f8fafc; border-radius:9999px; padding:4px 10px; cursor:pointer; }
+.hm-sm-pill.is-active{ background:#2271b1; color:#fff; border-color:#2271b1; }
+
+/* Save feedback fade */
+.hm-sm-admin__save-feedback{ transition: opacity .6s ease; }
+.hm-sm-admin__save-feedback.is-fade{ opacity:0; }
+
+/* Help notes */
+.hm-sm-admin__intro{ background:#f8fafc; border:1px solid #e5e7eb; border-left:3px solid #2271b1; padding:.6rem .8rem; margin:.6rem 0 .8rem; color:#334155; border-radius:6px; }
+.hm-sm-admin__intro p{ margin:.2rem 0; font-size:12.5px; line-height:1.6; }
+.hm-sm-admin__intro code{ background:#eef2f7; border:1px solid #e2e8f0; border-radius:4px; padding:.05rem .3rem; }
+
+/* Post type row */
+.hm-sm-admin__row{ flex-wrap: wrap; }
+.hm-sm-admin__row label{ white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.hm-sm-admin__row input[type="checkbox"]{ margin: 0; }
+
+/* Mini tabs inside a field */
+.hm-sm-admin__tabs--mini{ display:flex; gap:0; border-bottom:1px solid #e5e7eb; margin:6px 0 8px; }
+.hm-sm-admin__tabs--mini .button{ background:transparent; border:none; border-radius:0; padding:6px 10px; color:#334155; border-bottom:2px solid transparent; }
+.hm-sm-admin__tabs--mini .button:hover{ background:transparent; color:#0f172a; border-bottom-color:#6ea8e6; }
+.hm-sm-admin__tabs--mini .button.is-active{ color:#111827; border-bottom-color:#2271b1; font-weight:600; }

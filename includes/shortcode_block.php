@@ -1,3 +1,4 @@
+<?php /* MIT Licensed */ ?>
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 

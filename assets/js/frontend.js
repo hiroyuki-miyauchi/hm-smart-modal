@@ -1,9 +1,61 @@
+if (typeof window.HM_SM_DATA==='undefined'){window.HM_SM_DATA={settings:{sets:[]},i18n:{}};}
 // Front JS (vanilla) - extended features
 (function(){
+  // GA4送信用の薄いラッパー（存在しない場合は何もしない）
+  function hmSmSendEvent(name, params){
+    try{
+      if (typeof window.gtag === 'function') { window.gtag('event', name, params || {}); }
+    }catch(e){ /* no-op */ }
+  }
+
   if (typeof window.HM_SM_DATA === 'undefined') return;
   const CFG = window.HM_SM_DATA.settings || {};
   const CURRENT = window.HM_SM_DATA.current || {};
   const I18N = window.HM_SM_DATA.i18n || {};
+
+  function hmSmAbKey(idx){ return 'hm_sm_ab_'+idx; }
+  function hmSmAbAssigned(set, idx){
+    try{
+      if (!set.ab || !set.ab.enabled) return true;
+      const key = hmSmAbKey(idx);
+      const prev = sessionStorage.getItem(key);
+      if (prev !== null) return prev === '1';
+      const p = Math.max(0, Math.min(100, Number(set.ab.show_percent ?? 100)));
+      const assign = (Math.random()*100) < p ? 1 : 0;
+      sessionStorage.setItem(key, String(assign));
+      try{ if (typeof window.gtag==='function'){ window.gtag('event','hm_modal_ab_assign',{set_index:idx,assigned:assign,percent:p,title:set.title||''}); } }catch(e){}
+      return assign === 1;
+    }catch(e){ return true; }
+  }
+
+
+  function hmSmMatchUrl(set){
+    try{
+      if (!set.apply_on_urls_enabled) return true;
+      const mode = set.apply_on_urls_mode || 'list';
+      const rulesText = (set.apply_on_urls || '').split('\n').map(s=>s.trim()).filter(Boolean);
+      if (!rulesText.length) return true;
+      const url = location.href;
+      let matched = false;
+      for (const rule of rulesText){
+        const isNeg = rule.startsWith('!');
+        const pat = isNeg ? rule.slice(1).trim() : rule;
+        let ok = false;
+        if (mode === 'list'){
+          const esc = pat.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\\\*/g, '.*');
+          ok = new RegExp(esc).test(url);
+        }else if (mode === 'prefix'){
+          ok = url.startsWith(pat);
+        }else if (mode === 'regex'){
+          try{ ok = new RegExp(pat).test(url); }catch(e){ ok = false; }
+        }
+        if (isNeg && ok) return false;
+        if (ok) matched = true;
+      }
+      return matched;
+    }catch(e){ return true; }
+  }
+
 
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   function hexToRgba(hex, opacity){
@@ -188,6 +240,8 @@
     root.classList.remove('hm-sm--hidden','hm-sm--leave');
     root.classList.add('hm-sm--enter');
     content.innerHTML = '';
+    /* __HM_SM_TRANSFORM_LINKS__ */
+    
 
     cloneContentForSet(set, function(clone){
       if (clone) content.appendChild(clone);

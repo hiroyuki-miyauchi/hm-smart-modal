@@ -547,13 +547,15 @@ jQuery(function($){
 
   // Enabled badge update
   $('#hm-sm-sets').on('change', 'input[name*="[enabled]"]', function(){
+    const name = (this && this.name) ? this.name.trim() : '';
+    if (!/^sets\[\d+\]\[enabled\]$/.test(name)) { return; }
     const $set = $(this).closest('.hm-sm-admin__set');
     const on = $(this).prop('checked');
     const $b = $set.find('[data-status-badge]');
     $b.text(on ? HM_SM_ADMIN_DATA.texts.enabled : HM_SM_ADMIN_DATA.texts.disabled);
     $b.removeClass('hm-sm-admin__badge--on hm-sm-admin__badge--off');
     $b.addClass(on ? 'hm-sm-admin__badge--on' : 'hm-sm-admin__badge--off');
-  });
+});;
 
   // trigger_type visibility
   $('#hm-sm-sets').on('change', 'input[name*="[trigger_type]"]', function(){
@@ -599,6 +601,8 @@ jQuery(function($){
   // Export
   $('#hm-sm-export').on('click', function(){
     const payload = hmSmReadForm();
+    payload.version = (window.HM_SM_ADMIN_DATA && HM_SM_ADMIN_DATA.version) || '1.0.1';
+    payload.exported_at = new Date().toISOString();
     const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -631,6 +635,8 @@ jQuery(function($){
   // Save button click (form has novalidate to avoid HTML5 validation blocking)
   $('#hm-sm-save').on('click', function(){
     const payload = hmSmReadForm();
+    payload.version = (window.HM_SM_ADMIN_DATA && HM_SM_ADMIN_DATA.version) || '1.0.1';
+    payload.exported_at = new Date().toISOString();
     // clamp z-index to >= 0
     payload.z_index_root = Math.max(0, parseInt(payload.z_index_root || 0, 10));
     payload.z_index_trigger = Math.max(0, parseInt(payload.z_index_trigger || 0, 10));
