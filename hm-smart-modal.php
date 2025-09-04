@@ -2,15 +2,13 @@
 /**
  * Plugin Name: HM Smart Modal
  * Plugin URI: https://example.com
- * Description: 指定したセレクタの内容を複製してモーダルで表示する、または単なるリンクボタンを設置できる多機能プラグイン。複数セット・URL/投稿タイプ条件・PC/Tablet/SP設定・アクセシビリティ対応・バニラJS・ショートコード/ブロック対応。
+ * Description: 指定したセレクタの内容を複製してモーダル表示またはリンクボタンを設置できる多機能プラグイン。複数セット・URL/投稿タイプ条件・デバイス別設定・アクセシビリティ対応・バニラJS・ショートコード/ブロック対応。
  * Version: 1.0.1
  * Author: hiroyuki miyauchi
  * License: MIT
  * Text Domain: hm-smart-modal
  * Domain Path: /languages
  */
-
-if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 define( 'HM_SM_VERSION', '1.0.1' );
 define( 'HM_SM_SLUG', 'hm-smart-modal' );

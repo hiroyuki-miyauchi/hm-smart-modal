@@ -20,7 +20,7 @@ function hmSmRenderSet(set, idx) {
       <div class="hm-sm-admin__content">
         <div class="hm-sm-admin__row">
           <label><input type="checkbox" name="sets[${idx}][enabled]" ${enabled ? 'checked' : ''}> このセットを有効にする</label>
-          <label style="margin-left:16px"><input type="checkbox" name="sets[${idx}][auto_inject]" ${set.auto_inject !== false ? 'checked' : ''}> 自動でトリガーを固定配置する</label>
+          <label><input type="checkbox" name="sets[${idx}][auto_inject]" ${set.auto_inject !== false ? 'checked' : ''}> 自動でトリガーを固定配置する</label>
         </div>
         <div class="hm-sm-admin__row">
           <label>メモ（エクスポートに含まれます）</label>
@@ -39,10 +39,10 @@ function hmSmRenderSet(set, idx) {
 
           <div class="hm-sm-admin__field">
             <div class="hm-sm-admin__subhead">対象の投稿タイプ</div>
-            <div class="hm-sm-admin__row">
+            <div class="hm-sm-posttypes hm-sm-admin__row">
               ${(HM_SM_ADMIN_DATA.postTypes || []).map(pt => {
                 const on = (set.post_types || []).includes(pt.name) ? 'checked' : '';
-                return `<label style="margin-right:12px"><input type="checkbox" name="sets[${idx}][post_types][]" value="${pt.name}" ${on}> ${pt.label}</label>`;
+                return `<label class="hm-sm-posttypes__card"><input type="checkbox" name="sets[${idx}][post_types][]" value="${pt.name}" ${on}> ${pt.label}</label>`;
               }).join('')}
             </div>
             <p class="hm-sm-admin__help">チェックした投稿タイプのページで動きます。</p>
@@ -52,7 +52,7 @@ function hmSmRenderSet(set, idx) {
         <div class="hm-sm-admin__field" data-trigger-wrap>
           <div class="hm-sm-admin__subhead">動作タイプ</div>
           <label><input type="radio" name="sets[${idx}][trigger_type]" value="modal" ${set.trigger_type === 'link' ? '' : 'checked'}> モーダルで表示</label>
-          <label style="margin-left:16px"><input type="radio" name="sets[${idx}][trigger_type]" value="link" ${set.trigger_type === 'link' ? 'checked' : ''}> ただのリンク</label>
+          <label><input type="radio" name="sets[${idx}][trigger_type]" value="link" ${set.trigger_type === 'link' ? 'checked' : ''}> ただのリンク</label>
 
           <div class="hm-sm-admin__two" style="margin-top:8px">
             <div data-only-link>
@@ -60,7 +60,7 @@ function hmSmRenderSet(set, idx) {
               <input type="url" class="widefat" name="sets[${idx}][link_url]" value="${set.link_url || '#'}" placeholder="例：https://example.com/">
               <div class="hm-sm-admin__row">
                 <label><input type="checkbox" name="sets[${idx}][link_new_tab]" ${set.link_new_tab ? 'checked' : ''}> 別タブで開く</label>
-                <label style="margin-left:16px"><input type="checkbox" name="sets[${idx}][link_rel_noopener]" ${set.link_rel_noopener !== false ? 'checked' : ''}> rel="noopener noreferrer"を付ける（推奨）</label>
+                <label><input type="checkbox" name="sets[${idx}][link_rel_noopener]" ${set.link_rel_noopener !== false ? 'checked' : ''}> rel="noopener noreferrer"を付ける（推奨）</label>
               </div>
               <p class="hm-sm-admin__help">「ただのリンク」を選んだ時だけ有効です。</p>
             </div>
@@ -210,7 +210,7 @@ function hmSmRenderSet(set, idx) {
 
           <div class="hm-sm-admin__row">
             <label><input type="checkbox" name="sets[${idx}][modal][scroll_body]" ${set.modal?.scroll_body ? 'checked' : ''}> 本文だけスクロールにする</label>
-            <label style="margin-left:16px"><input type="checkbox" name="sets[${idx}][modal][respect_reduced_motion]" ${set.modal?.respect_reduced_motion !== false ? 'checked' : ''}> reduced-motion を尊重</label>
+            <label><input type="checkbox" name="sets[${idx}][modal][respect_reduced_motion]" ${set.modal?.respect_reduced_motion !== false ? 'checked' : ''}> reduced-motion を尊重</label>
           </div>
 
           <div class="hm-sm-admin__two">

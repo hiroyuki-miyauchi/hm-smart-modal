@@ -106,35 +106,37 @@
   }
 
   function enhanceTriggerSwitch(setEl){
-    const wrap = setEl.querySelector('[data-trigger-wrap]');
-    if (!wrap || wrap.__hm_switched) return;
-    wrap.__hm_switched = true;
-    // radios
-    const radios = wrap.querySelectorAll('input[type="radio"][name*="[trigger_type]"]');
-    if (radios.length < 2) return;
-    let radioModal=null, radioLink=null;
-    radios.forEach(r=>{ if(r.value==='modal') radioModal=r; if(r.value==='link') radioLink=r; });
-    if(!radioModal || !radioLink) return;
+    var $wrap = jQuery(setEl).find('[data-trigger-wrap]');
+    if(!$wrap.length || $wrap.data('hm-switched')) return;
+    $wrap.data('hm-switched', true);
+    var $modal = $wrap.find('input[type="radio"][name*="[trigger_type]"][value="modal"]');
+    var $link  = $wrap.find('input[type="radio"][name*="[trigger_type]"][value="link"]');
+    if(!$modal.length || !$link.length) return;
 
-    const switcher = document.createElement('div');
-    switcher.className='hm-sm-switchtabs';
-    const b1=document.createElement('button'); b1.type='button'; b1.className='hm-sm-pill'; b1.textContent='モーダルで表示';
-    const b2=document.createElement('button'); b2.type='button'; b2.className='hm-sm-pill'; b2.textContent='ただのリンク';
-    switcher.appendChild(b1); switcher.appendChild(b2);
-    const sub = wrap.querySelector('.hm-sm-admin__subhead');
-    wrap.insertBefore(switcher, sub? sub.nextSibling : wrap.firstChild);
+    var $switch = jQuery('<div class="hm-sm-switchtabs"></div>');
+    var $b1 = jQuery('<button type="button" class="hm-sm-pill">モーダルで表示</button>');
+    var $b2 = jQuery('<button type="button" class="hm-sm-pill">ただのリンク</button>');
+    $switch.append($b1, $b2);
+    var $sub = $wrap.children('.hm-sm-admin__subhead').first();
+    if($sub.length){ $switch.insertAfter($sub); } else { $wrap.prepend($switch); }
 
     function sync(){
-      const isLink = radioLink.checked;
-      b1.classList.toggle('is-active', !isLink);
-      b2.classList.toggle('is-active',  isLink);
-      wrap.querySelectorAll('[data-only-link]').forEach(n=> n.style.display = isLink?'':'none');
-      wrap.querySelectorAll('[data-only-modal]').forEach(n=> n.style.display = isLink?'none':'');
+      var isLink = $link.prop('checked');
+      $b1.toggleClass('is-active', !isLink);
+      $b2.toggleClass('is-active',  isLink);
+      $wrap.find('[data-only-link]').toggle(isLink);
+      $wrap.find('[data-only-modal]').toggle(!isLink);
     }
-    b1.addEventListener('click', ()=>{ if(!radioModal.checked){ radioModal.checked=true; radioModal.dispatchEvent(new Event('change',{bubbles:true})); } sync(); });
-    b2.addEventListener('click', ()=>{ if(!radioLink.checked){ radioLink.checked=true; radioLink.dispatchEvent(new Event('change',{bubbles:true})); } sync(); });
-    wrap.querySelectorAll('label>input[type="radio"]').forEach(inp=>{
-      const lab = inp.closest('label'); if (lab) lab.classList.add('hm-sm-visually-hidden');
+    $b1.on('click', function(){
+      if(!$modal.prop('checked')){ $modal.prop('checked', true).trigger('change'); }
+      sync();
+    });
+    $b2.on('click', function(){
+      if(!$link.prop('checked')){ $link.prop('checked', true).trigger('change'); }
+      sync();
+    });
+    $wrap.find('label>input[type="radio"]').each(function(){
+      jQuery(this).parent('label').addClass('hm-sm-visually-hidden');
     });
     sync();
   }

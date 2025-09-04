@@ -128,9 +128,9 @@
 .hm-sm-admin__intro code{ background:#eef2f7; border:1px solid #e2e8f0; border-radius:4px; padding:.05rem .3rem; }
 
 /* Post type row */
-.hm-sm-admin__row{ flex-wrap: wrap; }
-.hm-sm-admin__row label{ white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px; }
-.hm-sm-admin__row input[type="checkbox"]{ margin: 0; }
+.hm-sm-posttypes{ display:flex; flex-wrap:wrap; gap:10px; }
+.hm-sm-posttypes__card{ background:#fff; border:1px solid #e5e7eb; border-radius:6px; padding:4px 8px; display:inline-flex; align-items:center; gap:6px; margin:0; }
+.hm-sm-posttypes__card input[type="checkbox"]{ margin:0; }
 
 /* Mini tabs inside a field */
 .hm-sm-admin__tabs--mini{ display:flex; gap:0; border-bottom:1px solid #e5e7eb; margin:6px 0 8px; }

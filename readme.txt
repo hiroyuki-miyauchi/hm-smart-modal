@@ -21,7 +21,7 @@ Multiple sets, PC/Tablet/SP options, rich design controls, GA4 events, auto/open
 - **Auto-open conditions** (delay sec / exit-intent / scroll %).
 - **URL trigger** (query or hash), **shortcode** `[hm_sm_trigger set="0" text="応募する"]`, and a basic Gutenberg block.
 - **Import/Export JSON** + per-set memo. 
-- **Z-index overrides**. **iOS overscroll fix**.
+- **Z-index overrides**.
 
 == Installation ==
 1. Upload `hm-smart-modal` to `/wp-content/plugins/` and activate.
