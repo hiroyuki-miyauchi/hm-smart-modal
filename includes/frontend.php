@@ -31,6 +31,7 @@ function hm_sm_enqueue_assets() {
 
 add_action( 'wp_footer', 'hm_sm_render_modal_root' );
 function hm_sm_render_modal_root() {
+    $settings = get_option( HM_SM_OPTION_KEY );
     ?>
     <div id="hm-sm-root" class="hm-sm hm-sm--hidden" aria-hidden="true">
       <div class="hm-sm__overlay" data-hm-sm-close="1"></div>

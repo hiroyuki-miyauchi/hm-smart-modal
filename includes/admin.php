@@ -21,11 +21,12 @@ function hm_sm_admin_assets( $hook ) {
     wp_enqueue_style( 'wp-color-picker' );
     wp_enqueue_script( 'wp-color-picker' );
     wp_enqueue_style( 'hm-sm-admin', HM_SM_URL . 'assets/css/admin.css', array(), HM_SM_VERSION );
-    wp_enqueue_script( 'hm-sm-admin', HM_SM_URL . 'assets/js/admin.js', array('jquery'), HM_SM_VERSION, true );
-    
-        wp_enqueue_script( 'hm-sm-admin-tabs', HM_SM_URL . 'assets/js/admin.tabs.js', array(), HM_SM_VERSION, true );                wp_enqueue_script( 'hm-sm-admin-feedback', HM_SM_URL . 'assets/js/admin.feedback.js', array(), HM_SM_VERSION, true );
-wp_enqueue_script( 'hm-sm-admin-help', HM_SM_URL . 'assets/js/admin.help.js', array(), HM_SM_VERSION, true );
-        wp_enqueue_script( 'hm-sm-admin-trigger-group', HM_SM_URL . 'assets/js/admin.trigger.group.js', array(), HM_SM_VERSION, true );
+    wp_enqueue_script( 'hm-sm-admin', HM_SM_URL . 'assets/js/admin.js', array( 'jquery' ), HM_SM_VERSION, true );
+
+    wp_enqueue_script( 'hm-sm-admin-tabs', HM_SM_URL . 'assets/js/admin.tabs.js', array( 'jquery' ), HM_SM_VERSION, true );
+    wp_enqueue_script( 'hm-sm-admin-feedback', HM_SM_URL . 'assets/js/admin.feedback.js', array(), HM_SM_VERSION, true );
+    wp_enqueue_script( 'hm-sm-admin-help', HM_SM_URL . 'assets/js/admin.help.js', array(), HM_SM_VERSION, true );
+    wp_enqueue_script( 'hm-sm-admin-trigger-group', HM_SM_URL . 'assets/js/admin.trigger.group.js', array(), HM_SM_VERSION, true );
 $settings = get_option( HM_SM_OPTION_KEY );
     if ( ! is_array( $settings ) ) { $settings = array(); }
     wp_localize_script( 'hm-sm-admin', 'HM_SM_ADMIN_DATA', array(
