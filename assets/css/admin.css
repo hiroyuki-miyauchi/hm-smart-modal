@@ -1,0 +1,414 @@
+.hm-sm-admin { max-width: 980px; }
+.hm-sm-admin__note { background: #f3f4f6; padding: 12px; border-left: 4px solid #2563eb; margin-bottom: 10px; }
+
+/* 最低10pxの余白を確保 */
+.hm-sm-admin input[type="text"],
+.hm-sm-admin input[type="number"],
+.hm-sm-admin input[type="url"],
+.hm-sm-admin input[type="file"],
+.hm-sm-admin select,
+.hm-sm-admin textarea { margin-top: 6px; margin-bottom: 10px; }
+
+.hm-sm-admin__field { background: #fff; border: 1px solid #e5e7eb; padding: 12px; margin: 10px 0; }
+.hm-sm-admin__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hm-sm-admin__row { display: flex; gap: 12px; align-items: center; margin: 10px 0; }
+.hm-sm-admin__help{ color:#4b5563; font-size:12.5px; line-height:1.5; margin:6px 0 0; padding-left:8px; border-left:3px solid var(--hm-sm-accent, #8b5cf6); }
+.hm-sm-admin__actions { margin: 16px 0; }
+.hm-sm-admin__hr { border: 0; height: 1px; background: #e5e7eb; margin: 12px 0; }
+.hm-sm-admin__two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* セット全体 */
+.hm-sm-admin__set { border: 2px solid #e5e7eb; margin: 12px 0; background: #fafafa; border-radius: 8px; overflow: hidden; }
+.hm-sm-admin__set.is-open .hm-sm-admin__content { display: block; }
+.hm-sm-admin__set:not(.is-open) .hm-sm-admin__content { display: none; }
+
+/* アコーディオン見出し */
+.hm-sm-admin__set-header { display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 10px; cursor: pointer; }
+.hm-sm-admin__left { display: flex; align-items: center; gap: 10px; flex: 1; }
+.hm-sm-admin__toggle { width: 24px; height: 24px; border-radius: 6px; border: 1px solid #e5e7eb; display: inline-flex; align-items: center; justify-content: center; background: #f9fafb; font-weight: 700; }
+.hm-sm-admin__set-titleinput { flex: 1; }
+.hm-sm-admin__status { display: inline-flex; align-items: center; gap: 6px; }
+.hm-sm-admin__badge { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; line-height: 1; }
+.hm-sm-admin__badge--on { background: #2563eb; color: #fff; }   /* 有効: 青系 */
+.hm-sm-admin__badge--off { background: #9ca3af; color: #fff; }  /* 無効: グレー */
+
+.hm-sm-admin__content { padding: 10px; }
+
+/* 削除ボタンを赤系に */
+.hm-sm-admin__remove.button { background: #ef4444; color: #fff; border-color: #ef4444; }
+.hm-sm-admin__remove.button:hover { background: #dc2626; border-color: #dc2626; color: #fff; }
+
+@media (max-width: 782px) {
+  .hm-sm-admin__grid, .hm-sm-admin__two { grid-template-columns: 1fr; }
+}
+
+
+/* ラベルやボタンが入力とくっつかないように余白を追加 */
+.hm-sm-admin .button { margin-top: 6px; margin-bottom: 10px; margin-right: 8px; }
+.hm-sm-admin__field > label,
+.hm-sm-admin__field .hm-sm-admin__subhead { display:block; margin-bottom: 8px; }
+.hm-sm-admin__row label { margin-right: 12px; } /* 行内のラベル同士の間隔 */
+.hm-sm-admin__content label { display:block; margin-bottom: 6px; } /* 個別フィールドのラベル下に余白 */
+.hm-sm-admin__content .widefat,
+.hm-sm-admin__content input[type="text"],
+.hm-sm-admin__content input[type="number"],
+.hm-sm-admin__content input[type="url"],
+.hm-sm-admin__content select,
+.hm-sm-admin__content textarea { margin-top: 6px; margin-bottom: 10px; } /* 入力上下に最低10px程度 */
+
+.hm-sm-admin__status { margin-left: 10px; }
+
+
+.hm-sm-admin__save-feedback { margin-top: 8px; font-size: 13px; }
+.hm-sm-admin__save-feedback--ok { color: #065f46; background: #ecfdf5; border-left: 3px solid #10b981; padding: 6px 8px; border-radius: 4px; }
+.hm-sm-admin__save-feedback--ng { color: #991b1b; background: #fef2f2; border-left: 3px solid #ef4444; padding: 6px 8px; border-radius: 4px; }
+.hm-sm-admin__save-feedback--progress { color: #1f2937; background: #f3f4f6; border-left: 3px solid #9ca3af; padding: 6px 8px; border-radius: 4px; }
+
+
+/* ==== トグル（モーダル/リンク）を今どきのタブ風に整える ==== */ /* セクション開始 */
+.hm-sm-radio-tabs { display:inline-flex; border:1px solid #e5e7eb; border-radius:10px; overflow:hidden; background:#f9fafb; } /* タブの枠と背景 */
+.hm-sm-radio-tabs label { padding:8px 14px; cursor:pointer; user-select:none; font-size:13px; } /* タブ1個の見た目 */
+.hm-sm-radio-tabs label + label { border-left:1px solid #e5e7eb; } /* タブ間の区切り線 */
+.hm-sm-radio-tabs input[type="radio"] { position:absolute; opacity:0; width:0; height:0; pointer-events:none; } /* 素のラジオは隠す */
+.hm-sm-radio-tabs label.is-active { background:#2563eb; color:#fff; } /* 選択中タブの色 */
+
+/* ==== 対象の投稿タイプ（チェックボックス）をカード風のグリッドに ==== */ /* セクション開始 */
+.hm-sm-ptype-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-top:8px; } /* 自動折返しグリッド */
+.hm-sm-ptype-grid label { display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; } /* チェックボックスのカード */
+.hm-sm-ptype-grid input[type="checkbox"] { width:16px; height:16px; } /* チェックのサイズを適度に */
+
+
+/* === HM Smart Modal: UI clarity improvements (help box & headings) === */
+.hm-sm-admin .hm-sm-admin__subhead{
+  font-size:14px;
+  font-weight:700;
+  color:#111827; /* gray-900 */
+  background:#f3f4f6; /* gray-100 */
+  border-left:4px solid #111827;
+  padding:8px 10px;
+  margin:8px 0 10px;
+  border-radius:8px;
+}
+.hm-sm-admin p.hm-sm-admin__help {
+    color: #4b5563;
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin: 6px 0 10px;
+    padding-left: 8px;
+    border-left: 3px solid var(--hm-sm-accent, #8b5cf6);
+}
+.hm-sm-admin p.hm-sm-admin__help:before{
+  content:"🛈";
+  margin-right:6px;
+}
+.hm-sm-admin p.hm-sm-admin__help code{
+  background:rgba(17,24,39,.06);
+  padding:1px 5px;
+  border-radius:4px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+/* block wrapper */
+.hm-sm-admin .hm-sm-admin__field{
+  border-radius:10px;
+  box-shadow:0 1px 0 rgba(17,24,39,.04);
+}
+
+/* set header title input breathing room */
+.hm-sm-admin .hm-sm-admin__set-header{
+  background:#f9fafb;
+}
+
+/* slightly larger set title input for visibility */
+.hm-sm-admin input.hm-sm-admin__set-titleinput{
+  font-size:14px;
+  padding:8px 10px;
+}
+
+/* ensure labels inside rows are not cramped */
+.hm-sm-admin .hm-sm-admin__row label{
+  display:inline-flex;
+  align-items:center;
+}
+
+/* HM Smart Modal Grouping */
+.hm-sm-group{border-top:1px dashed #e5e7eb;margin-top:14px;padding-top:12px}
+.hm-sm-group__title{font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.hm-sm-group__title::before{content:"";width:8px;height:8px;background:#d1d5db;border-radius:9999px;display:inline-block}
+.hm-sm-group-divider{height:1px;background:repeating-linear-gradient(90deg,#e5e7eb 0,#e5e7eb 6px,transparent 6px,transparent 12px);margin:14px 0}
+
+
+
+/* === 2025-09-05: UX pass — simplify to single-column and align radio tabs === */
+
+/* Force single-column inside grouped admin pairs */
+.hm-sm-admin__two{
+  display:grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+
+/* Make rows wrap neatly even if there are multiple controls */
+.hm-sm-admin__row{
+  flex-wrap: wrap;
+}
+
+/* Radio segmented tabs (Modal / Link) — align look&feel to post type cards */
+.hm-sm-radio-tabs{
+  display: inline-flex;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+.hm-sm-radio-tabs label{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  line-height: 1;
+  margin: 0;
+  border-right: 1px solid #e5e7eb;
+  user-select: none;
+  cursor: pointer;
+}
+.hm-sm-radio-tabs label:last-child{ border-right: none; }
+
+/* Hide native radios but keep them accessible */
+.hm-sm-radio-tabs input[type="radio"]{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Active state — both via class and via :has() as a fallback/backup */
+.hm-sm-radio-tabs label.is-active,
+.hm-sm-radio-tabs label:has(input[type="radio"]:checked){
+  background: #eef2ff; /* subtle indigo-50 */
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Keep help texts understated below */
+.hm-sm-admin__help{ color:#4b5563; font-size:12.5px; line-height:1.5; margin:6px 0 0; padding-left:8px; border-left:3px solid var(--hm-sm-accent, #8b5cf6); }
+
+/* Ensure inner field contents don't fight with 1-column layout */
+.hm-sm-group .hm-sm-admin__two > div,
+.hm-sm-admin__field .hm-sm-admin__two > div{
+  width: 100%;
+}
+
+
+/* === 2025-09-05: tabs active fix & full single-column grid === */
+
+/* 1) Use only :has(:checked) to determine active look */
+.hm-sm-radio-tabs label.is-active{
+  background: transparent !important;
+  color: inherit !important;
+  font-weight: 500 !important;
+}
+.hm-sm-radio-tabs label:has(input[type="radio"]:checked){
+  background: #eef2ff; /* light indigo */
+  color: #111827;
+  font-weight: 600;
+}
+
+/* 2) Make the panel grid single column globally */
+.hm-sm-admin__grid{
+  grid-template-columns: 1fr !important;
+}
+
+
+
+/* === 2025-09-05: layout tuning — top grids back to 2col; sets use fluid auto-fit; groups 2col with wrap === */
+
+/* Top-level grids (global settings in admin.php) -> 2 columns */
+.hm-sm-admin .hm-sm-admin__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px;
+  align-items: start;
+}
+
+/* In each Set content, grids become fluid; will drop to 1 column if not enough width */
+.hm-sm-admin__set .hm-sm-admin__grid{
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)) !important;
+}
+
+/* Grouped pairs inside long sections ("トリガー"以降) become fluid with auto wrapping */
+.hm-sm-admin__two{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 12px !important;
+}
+
+/* Ensure each inner item spans full width of its grid cell */
+.hm-sm-group .hm-sm-admin__two > div,
+.hm-sm-admin__field .hm-sm-admin__two > div{
+  width: 100%;
+}
+
+/* Minor: ensure long labels wrap and don't force overflow */
+.hm-sm-admin__field label{
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+}
+
+
+/* === 2025-09-05: class-mod split between global vs set === */
+
+/* Global (admin.php top area) -> 2 columns */
+.hm-sm-admin__grid--global{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Sets (inside each accordion) -> always 1 column */
+.hm-sm-admin__grid--set{
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 16px;
+}
+
+/* Inside long set sections, pairs align horizontally and wrap if needed */
+.hm-sm-admin__set .hm-sm-admin__two{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 12px !important;
+}
+
+/* Ensure inner children fill each cell */
+.hm-sm-admin__set .hm-sm-admin__two > div{
+  width: 100%;
+}
+
+
+/* === 2025-09-05: authoritative split & override to ensure sets are 1col === */
+
+/* Any grid that is NOT explicitly global -> 1 column */
+.hm-sm-admin .hm-sm-admin__grid:not(.hm-sm-admin__grid--global){
+  grid-template-columns: 1fr !important;
+}
+
+/* Extra safety: when inside a set wrapper, force 1 column */
+.hm-sm-admin__set .hm-sm-admin__grid{
+  grid-template-columns: 1fr !important;
+}
+
+/* Inputs cluster in sets remain horizontal & wrap */
+.hm-sm-admin__set .hm-sm-admin__two{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 12px !important;
+}
+
+
+/* === 2025-09-05: spacing & subdued help === */
+
+/* Give consistent vertical rhythm within fields and set content */
+.hm-sm-admin__field > * + *,
+.hm-sm-admin__content > * + *,
+.hm-sm-admin__two > * + *{
+  margin-top: 10px !important;
+}
+
+/* Labels not glued to inputs */
+.hm-sm-admin__field label,
+.hm-sm-admin__row label{
+  margin-bottom: 4px;
+}
+
+/* Subdued help: no card, no icon */
+.hm-sm-admin__help{ color:#4b5563; font-size:12.5px; line-height:1.5; margin:6px 0 0; padding-left:8px; border-left:3px solid var(--hm-sm-accent, #8b5cf6); }
+.hm-sm-admin__help:before{ content: "" !important; display: none !important; }
+
+/* v8: row spacing via label-right only */
+.hm-sm-admin .hm-sm-admin__row{ display:flex; align-items:center; gap:0 !important; flex-wrap:wrap; }
+.hm-sm-admin .hm-sm-admin__row > label{ margin-right:10px !important; }
+.hm-sm-admin .hm-sm-admin__row > *:not(label){ margin-left:0 !important; }
+.hm-sm-admin .hm-sm-admin__row > label + .widefat{ flex:1 1 auto; min-width:0; max-width:100%; }
+
+:root{ --hm-sm-accent:#8b5cf6; } /* lighter purple */
+.hm-sm-admin .hm-sm-radio-tabs{ display:inline-flex; align-items:stretch; overflow:hidden; }
+.hm-sm-admin .hm-sm-radio-tabs label{ display:flex; align-items:center; line-height:1; }
+.hm-sm-admin .hm-sm-radio-tabs label.is-active,
+.hm-sm-admin .hm-sm-radio-tabs label:has(input[type="radio"]:checked){
+  background:var(--hm-sm-accent) !important;
+  color:#fff !important;
+  border-color:var(--hm-sm-accent) !important;
+}
+.hm-sm-admin .hm-sm-radio-tabs label + label{ border-left:1px solid rgba(255,255,255,.25) !important; }
+
+/* ラジオタブの余白調整：白い帯対策 */
+.hm-sm-radio-tabs .hm-sm-admin__field label { margin-bottom: 0; } /* 下マージンを打ち消す */
+
+
+/* ラベル右余白で詰まり解消 */
+.hm-sm-admin__field label { margin-right: 10px; } /* ラベル間隔 */
+
+/* ラジオタブの全ラベル余白をリセット（白帯に見える余白を解消） */
+.hm-sm-radio-tabs label { margin: 0; } /* ラジオタブラベル余白 */
+
+/* 保存メッセージのフェード */
+.hm-sm-admin__save-feedback{ opacity:1; transition: opacity .4s ease; }
+.hm-sm-admin__save-feedback.is-hidden{ opacity:0; }
+
+
+/* HM Smart Modal: FAQ styles */
+.hm-sm-faq{ /* セクション外枠 */ margin:16px 0 20px; padding:16px; border:1px solid #e0e0e0; border-radius:10px; background:#fff; }
+.hm-sm-faq__header{ /* 見出し領域 */ margin-bottom:8px; }
+.hm-sm-faq__title{ /* タイトル */ margin:0 0 4px; font-size:1.1rem; font-weight:600; }
+.hm-sm-faq__desc{ /* 説明文 */ margin:0; color:#555; font-size:0.92rem; }
+.hm-sm-faq__list{ /* 質問群コンテナ */ display:block; margin-top:8px; }
+.hm-sm-faq__item{ /* 各details */ border-top:1px solid #f0f0f0; padding:8px 0; }
+.hm-sm-faq__item:first-of-type{ border-top:none; }
+.hm-sm-faq__q{ /* summary */ list-style:none; cursor:pointer; display:flex; align-items:center; gap:8px; font-weight:600; }
+.hm-sm-faq__q::-webkit-details-marker{ display:none; }
+.hm-sm-faq__icon{ /* 左側アイコン */ width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; background:#f5f5f5; color:#333; font-size:0.9rem; }
+.hm-sm-faq__a{ /* 回答ボックス */ margin:6px 0 0 28px; color:#333; line-height:1.6; }
+.hm-sm-faq code, .hm-sm-faq kbd{ /* コード/キー */ background:#f7f7f9; border:1px solid #e1e1e8; border-radius:4px; padding:0 4px; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+.hm-sm-faq kbd{ font-weight:600; }
+.hm-sm-faq details[open] .hm-sm-faq__q{ color:#111; }
+@media (prefers-reduced-motion:no-preference){
+  .hm-sm-faq__a{ transition: all .2s ease; }
+}
+
+/* Shortcode row */
+.hm-sm-admin__row--shortcode code{display:inline-block;padding:2px 6px;border:1px solid #e1e1e8;border-radius:4px;background:#f7f7f9}
+
+
+/* HM Smart Modal: FAQ wrapper accordion */
+.hm-sm-faq{ margin:16px 0 20px; border:1px solid #e0e0e0; border-radius:10px; background:#fff; }
+.hm-sm-faq__wrapsum{ display:flex; align-items:center; gap:8px; padding:10px 12px; cursor:pointer; font-weight:600; }
+.hm-sm-faq__wrapsum:focus{ outline:2px solid #2271b1; outline-offset:2px; }
+.hm-sm-faq__chev{ width:10px; height:10px; display:inline-block; border-right:2px solid #777; border-bottom:2px solid #777; transform:rotate(-45deg); transition:transform .2s ease; margin-right:2px; }
+.hm-sm-faq[open] .hm-sm-faq__chev{ transform:rotate(45deg); } /* ▶→▼ に見えるよう回転 */
+.hm-sm-faq__title{ font-size:1rem; }
+.hm-sm-faq__panel{ padding:8px 12px 12px; border-top:1px solid #f0f0f0; }
+.hm-sm-faq__desc{ margin:0 0 8px; color:#555; font-size:0.92rem; }
+
+/* Inner items */
+.hm-sm-faq__list{ display:block; }
+.hm-sm-faq__item{ border-top:1px solid #f6f6f6; padding:6px 0; }
+.hm-sm-faq__item:first-of-type{ border-top:none; }
+.hm-sm-faq__q{ list-style:none; cursor:pointer; display:flex; align-items:center; position:relative; padding-left:22px; }
+.hm-sm-faq__q::-webkit-details-marker{ display:none; }
+.hm-sm-faq__q::before{ content:'+'; position:absolute; left:0; top:0; width:18px; height:18px; line-height:18px; text-align:center; border:1px solid #ddd; border-radius:4px; color:#333; background:#f9f9f9; font-weight:700; }
+.hm-sm-faq__item[open] .hm-sm-faq__q::before{ content:'−'; background:#f3f3f3; }
+.hm-sm-faq__a{ margin:6px 0 0 0; color:#333; line-height:1.6; padding-left:4px; }
+.hm-sm-faq code, .hm-sm-faq kbd{ background:#f7f7f9; border:1px solid #e1e1e8; border-radius:4px; padding:0 4px; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+/* === HM Smart Modal Admin v1.0.7 patches === */
+
+/* Center plus/minus marker vertically */
+.hm-sm-faq__q{ position:relative; min-height:24px; }
+.hm-sm-faq__q::before{
+  top:50% !important; transform:translateY(-50%);
+  display:inline-flex; align-items:center; justify-content:center;
+  width:18px; height:18px; line-height:1;
+}
+/* === End Admin patches === */
