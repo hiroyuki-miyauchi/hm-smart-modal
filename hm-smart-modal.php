@@ -3,7 +3,7 @@
  * Plugin Name: HM Smart Modal
  * Plugin URI: https://github.com/hiroyuki-miyauchi/hm-smart-modal
  * Description: 任意のセレクタで抽出したコンテンツをアクセシブルなモーダルで表示、または設定したリンクボタンを設置できる軽量プラグインです。複数セット・URL/投稿タイプ条件・PC/Tablet/SP別設定に対応。バニラJS。ショートコード/ブロック対応。
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: hiroyuki miyauchi
  * Author URI: https://chronoviq.com/about-author/
  * License: MIT
@@ -15,7 +15,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'HM_SM_VERSION', '1.0.1' );
+define( 'HM_SM_VERSION', '1.0.2' );
 define( 'HM_SM_SLUG', 'hm-smart-modal' );
 define( 'HM_SM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'HM_SM_URL', plugin_dir_url( __FILE__ ) );

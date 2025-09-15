@@ -4,7 +4,7 @@
 .hm-sm:not(.hm-sm--hidden) { display: block; } /* 非hidden状態では表示する（JSがクラスを切替） */
 .hm-sm--enter, .hm-sm--leave { display: block; } /* アニメ中も可視にする */
 .hm-sm__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
-.hm-sm__dialog { position: relative; max-width: 720px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.2); overflow: hidden; transform: translateY(20px); opacity: 30px 0 0; }
+.hm-sm__dialog { position: relative; max-width: 720px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.2); overflow: hidden; transform: translateY(20px); opacity: 0; }
 .hm-sm__content { max-height: 60vh; overflow: auto; padding: 16px; }
 .hm-sm__actions { display: flex; justify-content: center; padding: clamp(12px, 2.5vw, 20px) clamp(16px, 4vw, 28px) clamp(30px, 3vw, 24px); border-top: none; /* 下部の白い線を除去 */ }
 .hm-sm__close { position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 999px; border: 1px solid #e5e7eb; background: #fff; cursor: pointer; }
@@ -77,7 +77,7 @@
 .hm-sm__dialog {
   background:#fff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.25);
   max-height:96vh; overflow:hidden; margin:0 !important; align-self:center;
-  padding:0; /* paddings are handled by content/actions */
+  padding: 30px 0 5px; /* paddings are handled by content/actions */
 }
 
 /* 3) Inner content: NO shadow/NO radius; center children; safe paddings */
